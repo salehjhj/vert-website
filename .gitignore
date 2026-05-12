@@ -1,0 +1,5 @@
+# Raw photo shoot originals (large, not needed for the website)
+vert-website/
+
+# Thumbs
+**/Thumbs.db
