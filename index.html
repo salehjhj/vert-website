@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta name="description" content="Vert Jewellery – handcrafted luxury jewellery">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>VERT — Fine Jewelry. Kuwait.</title>
+  <meta name="description" content="VERT is a fine jewelry label born in Kuwait, rooted in nature, crafted in gold." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    /* ── Slideshow Styles ─────────────────────────────── */
+    .slideshow {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 3/4;
+      overflow: hidden;
+      background: #f5f2ee;
+    }
+    .slide {
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      transition: opacity 0.5s ease;
+    }
+    .slide.active {
+      opacity: 1;
+    }
+    .slide img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .slide-dots {
+      position: absolute;
+      bottom: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 5px;
+      z-index: 10;
+    }
+    .slide-dot {
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.5);
+      border: none;
+      cursor: pointer;
+      padding: 0;
+      transition: background 0.2s;
+    }
+    .slide-dot.active {
+      background: #fff;
+    }
+    .slide-arrows {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 8px;
+      pointer-events: none;
+      z-index: 10;
+    }
+    .slide-arrow {
+      pointer-events: all;
+      background: rgba(255,255,255,0.7);
+      border: none;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transition: opacity 0.2s;
+    }
+    .product-card:hover .slide-arrow,
+    .product-modal .slide-arrow {
+      opacity: 1;
+    }
+
+    /* ── Variation Toggle ─────────────────────────────── */
+    .variation-toggle {
+      display: flex;
+      gap: 6px;
+      margin-bottom: 12px;
+    }
+    .var-btn {
+      padding: 4px 12px;
+      border: 1px solid #c9b99a;
+      background: transparent;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 11px;
+      letter-spacing: 0.05em;
+      cursor: pointer;
+      transition: all 0.2s;
+      color: #6b5a47;
+    }
+    .var-btn.active {
+      background: #1a1a18;
+      border-color: #1a1a18;
+      color: #fff;
+    }
+
+    /* ── Modal Slideshow ──────────────────────────────── */
+    .modal-slideshow {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      min-height: 320px;
+    }
+    .modal-slideshow .slide {
+      border-radius: 0;
+    }
+    .modal-slideshow .slide img {
+      object-fit: cover;
+    }
+    .modal-slideshow .slide-arrow {
+      opacity: 1;
+      background: rgba(255,255,255,0.85);
+      width: 34px;
+      height: 34px;
+    }
+    .modal-slideshow .slide-dots {
+      bottom: 14px;
+    }
+    .modal-slideshow .slide-dot {
+      width: 6px;
+      height: 6px;
+    }
+
+    /* ── Category card real photos ──────────────────── */
+    .cat-visual img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .cat-visual {
+      overflow: hidden;
+    }
+
+    /* ── Card Variation Toggle ───────────────────────── */
+    .card-var-toggle {
+      position: absolute;
+      bottom: 44px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      background: rgba(255,255,255,0.92);
+      border-radius: 20px;
+      padding: 3px;
+      gap: 2px;
+      z-index: 20;
+      box-shadow: 0 1px 8px rgba(0,0,0,0.12);
+      white-space: nowrap;
+    }
+    .cvt-pill {
+      padding: 4px 11px;
+      border: none;
+      border-radius: 16px;
+      background: transparent;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 10px;
+      letter-spacing: 0.04em;
+      cursor: pointer;
+      color: #6b5a47;
+      transition: background 0.2s, color 0.2s;
+    }
+    .cvt-pill.active {
+      background: #1a1a18;
+      color: #fff;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Page Loader -->
+  <div class="page-loader" id="page-loader">
+    <span class="loader-logo">VERT</span>
+  </div>
+
+  <!-- Custom Cursor -->
+  <div class="cursor-dot" id="cursor-dot"></div>
+  <div class="cursor-ring" id="cursor-ring"></div>
+
+  <!-- ================================ NAVBAR ================================ -->
+  <header class="navbar" id="navbar">
+    <nav class="nav-inner">
+      <div class="nav-left">
+        <a href="#collections" class="nav-link">Collections</a>
+        <a href="#about" class="nav-link">Our Story</a>
+      </div>
+      <div class="nav-center">
+        <a href="#" class="brand-wordmark">VERT</a>
+      </div>
+      <div class="nav-right">
+        <button class="icon-btn" id="cart-toggle" aria-label="Open cart">
+          <svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 10.5V6a3.75 3.75 0 1 0-7.5 0v4.5m11.356-1.993 1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 0 1-1.12-1.243l1.264-12A1.125 1.125 0 0 1 5.513 7.5h12.974c.576 0 1.059.435 1.119 1.007ZM8.625 10.5a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm5.625 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Z"/>
+          </svg>
+          <span class="cart-badge" id="cart-badge" aria-live="polite">0</span>
+        </button>
+        <button class="icon-btn hamburger" id="hamburger" aria-label="Open menu">
+          <span></span><span></span>
+        </button>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu" id="mobile-menu" aria-hidden="true">
+    <button class="mobile-menu-close" id="mobile-menu-close" aria-label="Close menu">
+      <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12"/>
+      </svg>
+    </button>
+    <nav class="mobile-nav">
+      <a href="#collections" class="mobile-nav-link">Collections</a>
+      <a href="#categories" class="mobile-nav-link">Earrings</a>
+      <a href="#categories" class="mobile-nav-link">Rings</a>
+      <a href="#categories" class="mobile-nav-link">Bracelets</a>
+      <a href="#about" class="mobile-nav-link">Our Story</a>
+    </nav>
+    <div class="mobile-menu-footer">
+      <a href="https://wa.me/96597804090" class="mobile-whatsapp-link">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/>
+        </svg>
+        WhatsApp: +965 9780 4090
+      </a>
+    </div>
+  </div>
+
+  <!-- ================================ HERO ================================ -->
+  <section class="hero" id="hero">
+    <div class="hero-backdrop">
+      <div class="hero-glow hero-glow-1"></div>
+      <div class="hero-glow hero-glow-2"></div>
+    </div>
+    <div class="hero-leaf hero-leaf-tl"></div>
+    <div class="hero-leaf hero-leaf-br"></div>
+    <div class="hero-content">
+      <h1 class="hero-brand">VERT</h1>
+      <div class="hero-rule-wrap">
+        <div class="hero-rule-line"></div>
+        <div class="hero-rule-gem"></div>
+        <div class="hero-rule-line"></div>
+      </div>
+      <p class="hero-tagline">Fine Jewelry. Kuwait.</p>
+      <a href="#collections" class="hero-cta">Explore Collection</a>
+    </div>
+    <div class="hero-scroll-hint">
+      <span class="scroll-label">Scroll</span>
+      <div class="scroll-track"><div class="scroll-thumb"></div></div>
+    </div>
+  </section>
+
+  <!-- ================================ CATEGORIES ================================ -->
+  <section class="categories-section" id="categories">
+    <div class="section-eyebrow reveal-up">The Collection</div>
+    <div class="categories-grid">
+
+      <article class="cat-card reveal-up" style="--delay:0s" data-filter="earrings">
+        <div class="cat-visual cat-bg-1">
+          <img src="images/jewelry_20_1.jpg" alt="Earrings" loading="lazy" />
+          <div class="cat-hover-veil">
+            <span class="cat-hover-name">Earrings</span>
+            <span class="cat-hover-cta">Shop Now →</span>
+          </div>
+        </div>
+        <p class="cat-label">Earrings</p>
+      </article>
+
+      <article class="cat-card reveal-up" style="--delay:0.1s" data-filter="rings">
+        <div class="cat-visual cat-bg-2">
+          <img src="images/jewelry_1.jpg" alt="Rings" loading="lazy" />
+          <div class="cat-hover-veil">
+            <span class="cat-hover-name">Rings</span>
+            <span class="cat-hover-cta">Shop Now →</span>
+          </div>
+        </div>
+        <p class="cat-label">Rings</p>
+      </article>
+
+      <article class="cat-card reveal-up" style="--delay:0.2s" data-filter="bracelets">
+        <div class="cat-visual cat-bg-3">
+          <img src="images/jewelry_37.jpg" alt="Bracelets" loading="lazy" />
+          <div class="cat-hover-veil">
+            <span class="cat-hover-name">Bracelets</span>
+            <span class="cat-hover-cta">Shop Now →</span>
+          </div>
+        </div>
+        <p class="cat-label">Bracelets</p>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- ================================ NEW ARRIVALS ================================ -->
+  <section class="arrivals-section" id="collections">
+    <div class="section-title-row">
+      <div class="title-rule"></div>
+      <h2 class="section-heading">New Arrivals</h2>
+      <div class="title-rule"></div>
+    </div>
+
+    <div class="filter-bar" role="tablist" aria-label="Filter by category">
+      <button class="filter-pill active" data-filter="all" role="tab" aria-selected="true">All</button>
+      <button class="filter-pill" data-filter="earrings" role="tab">Earrings</button>
+      <button class="filter-pill" data-filter="rings" role="tab">Rings</button>
+      <button class="filter-pill" data-filter="bracelets" role="tab">Bracelets</button>
+    </div>
+
+    <div class="products-grid" id="products-grid" role="list">
+      <!-- Populated by app.js -->
+    </div>
+  </section>
+
+  <!-- ================================ BRAND STORY ================================ -->
+  <section class="brand-story" id="about">
+    <div class="story-inner">
+      <div class="story-ornament reveal-up">✦</div>
+      <blockquote class="story-quote reveal-up">
+        "VERT is a fine jewelry label born in Kuwait,<br class="br-desktop" />
+        rooted in nature, crafted in gold."
+      </blockquote>
+      <div class="story-divider reveal-up"></div>
+      <p class="story-body reveal-up">
+        Each piece is an ode to the living world — the vein of a leaf,<br class="br-desktop" />
+        the curl of a fern, the quiet weight of gold worn close to skin.
+      </p>
+      <a href="#collections" class="story-btn reveal-up">Discover Our Story</a>
+    </div>
+  </section>
+
+  <!-- ================================ EDITORIAL GRID ================================ -->
+  <section class="editorial-section">
+    <div class="section-eyebrow reveal-up">@vert_kw</div>
+    <div class="editorial-grid">
+      <div class="ed-cell ed-wide reveal-up" style="--delay:0s; background: #f0ebe3; overflow:hidden;">
+        <img src="images/jewelry_9_1.jpg" alt="" style="width:100%;height:100%;object-fit:cover;" loading="lazy"/>
+      </div>
+      <div class="ed-cell reveal-up" style="--delay:0.06s; background: #e8e4de; overflow:hidden;">
+        <img src="images/jewelry_15.jpg" alt="" style="width:100%;height:100%;object-fit:cover;" loading="lazy"/>
+      </div>
+      <div class="ed-cell reveal-up" style="--delay:0.12s; background: #f0ebe3; overflow:hidden;">
+        <img src="images/jewelry_21.jpg" alt="" style="width:100%;height:100%;object-fit:cover;" loading="lazy"/>
+      </div>
+      <div class="ed-cell reveal-up" style="--delay:0.06s; background: #e8e4de; overflow:hidden;">
+        <img src="images/jewelry_35.jpg" alt="" style="width:100%;height:100%;object-fit:cover;" loading="lazy"/>
+      </div>
+      <div class="ed-cell reveal-up" style="--delay:0.12s; background: #f0ebe3; overflow:hidden;">
+        <img src="images/jewelry_27.jpg" alt="" style="width:100%;height:100%;object-fit:cover;" loading="lazy"/>
+      </div>
+      <div class="ed-cell ed-wide reveal-up" style="--delay:0.18s; background: #e8e4de; overflow:hidden;">
+        <img src="images/jewelry_32.jpg" alt="" style="width:100%;height:100%;object-fit:cover;" loading="lazy"/>
+      </div>
+    </div>
+    <div class="editorial-cta reveal-up">
+      <a href="https://instagram.com/vert_kw" class="btn-ghost" target="_blank" rel="noopener">Follow @vert_kw</a>
+    </div>
+  </section>
+
+  <!-- ================================ FOOTER ================================ -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <p class="footer-logo">VERT</p>
+        <p class="footer-motto">Fine Jewelry. Kuwait.</p>
+      </div>
+      <div class="footer-rule"></div>
+      <div class="footer-columns">
+        <div class="footer-col">
+          <span class="footer-col-heading">Collections</span>
+          <a href="#" class="footer-link">Earrings</a>
+          <a href="#" class="footer-link">Rings</a>
+          <a href="#" class="footer-link">Bracelets</a>
+        </div>
+        <div class="footer-col">
+          <span class="footer-col-heading">Maison VERT</span>
+          <a href="#about" class="footer-link">Our Story</a>
+          <a href="#" class="footer-link">Craftsmanship</a>
+          <a href="#" class="footer-link">Materials</a>
+          <a href="#" class="footer-link">Care Guide</a>
+        </div>
+        <div class="footer-col">
+          <span class="footer-col-heading">Contact</span>
+          <a href="https://wa.me/96597804090" class="footer-link footer-wa" target="_blank" rel="noopener">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/>
+            </svg>
+            +965 9780 4090
+          </a>
+          <a href="mailto:hello@vert.kw" class="footer-link">hello@vert.kw</a>
+          <span class="footer-link" style="cursor:default">Kuwait City, Kuwait</span>
+        </div>
+      </div>
+      <div class="footer-rule"></div>
+      <div class="footer-bottom">
+        <span>© 2025 VERT Fine Jewelry — Kuwait</span>
+        <div class="footer-legal">
+          <a href="#" class="footer-link-sm">Privacy</a>
+          <a href="#" class="footer-link-sm">Terms</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ================================ CART SIDEBAR ================================ -->
+  <div class="overlay" id="cart-overlay"></div>
+  <aside class="cart-sidebar" id="cart-sidebar" aria-label="Shopping cart" aria-hidden="true">
+    <div class="cart-head">
+      <h3 class="cart-title">Cart</h3>
+      <button class="icon-btn" id="close-cart" aria-label="Close cart">
+        <svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12"/>
+        </svg>
+      </button>
+    </div>
+    <div class="cart-body" id="cart-body">
+      <div class="cart-empty" id="cart-empty">
+        <div class="cart-empty-icon">◯</div>
+        <p>Your cart is empty.</p>
+        <a href="#collections" class="btn-ghost-dark">Browse Collection</a>
+      </div>
+    </div>
+    <div class="cart-foot" id="cart-foot" hidden>
+      <div class="cart-subtotal-row">
+        <span class="cart-subtotal-label">Subtotal</span>
+        <span class="cart-subtotal-value" id="cart-total">KWD 0.000</span>
+      </div>
+      <button class="btn-dark w-full" id="checkout-btn">Checkout</button>
+      <a href="https://wa.me/96597804090" class="btn-wa w-full" id="cart-wa-btn" target="_blank" rel="noopener">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/>
+        </svg>
+        Order via WhatsApp
+      </a>
+    </div>
+  </aside>
+
+  <!-- ================================ PRODUCT MODAL ================================ -->
+  <div class="overlay" id="modal-overlay"></div>
+  <div class="product-modal" id="product-modal" role="dialog" aria-modal="true" aria-label="Product details" hidden>
+    <button class="modal-close" id="close-modal" aria-label="Close">
+      <svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12"/>
+      </svg>
+    </button>
+    <div class="modal-gallery">
+      <div class="modal-main-img" id="modal-main-img">
+        <!-- Slideshow injected by JS -->
+      </div>
+    </div>
+    <div class="modal-details">
+      <div class="modal-meta-row">
+        <span class="modal-cat-label" id="modal-cat"></span>
+        <span class="modal-new-tag">New</span>
+      </div>
+      <h2 class="modal-product-name" id="modal-name"></h2>
+      <p class="modal-product-price" id="modal-price"></p>
+      <p class="modal-product-desc" id="modal-desc"></p>
+
+      <!-- Variation toggle (gold/silver or emerald/white) -->
+      <div class="modal-option-group" id="variation-group" hidden>
+        <span class="option-label" id="variation-label">Variation</span>
+        <div class="variation-toggle" id="variation-pills"></div>
+      </div>
+
+      <div class="modal-option-group">
+        <span class="option-label">Metal</span>
+        <div class="option-pills" id="metal-pills"></div>
+      </div>
+
+      <div class="modal-option-group" id="size-group" hidden>
+        <span class="option-label">Size</span>
+        <div class="option-pills" id="size-pills"></div>
+      </div>
+
+      <div class="modal-actions">
+        <button class="btn-dark w-full" id="modal-add-cart">Add to Cart</button>
+        <a class="btn-wa w-full" id="modal-wa-btn" href="#" target="_blank" rel="noopener">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/>
+          </svg>
+          Order via WhatsApp
+        </a>
+      </div>
+
+      <div class="modal-accordions">
+        <details class="accordion">
+          <summary class="accordion-head">Details &amp; Specifications <span class="acc-icon">+</span></summary>
+          <div class="accordion-body" id="modal-specs"></div>
+        </details>
+        <details class="accordion">
+          <summary class="accordion-head">Shipping &amp; Returns <span class="acc-icon">+</span></summary>
+          <div class="accordion-body">
+            <p>Free shipping across Kuwait within 1–3 business days. International shipping available on request. Returns accepted within 14 days in unworn, original condition.</p>
+          </div>
+        </details>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast notification -->
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script src="app.js"></script>
+</body>
+</html>

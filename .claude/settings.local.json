@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(sed 's/\\\\.jpg//')",
+      "Bash(awk '{print $1}')",
+      "Bash(sort -t_ -k2 -n)",
+      "Bash(node -e ':*)"
+    ]
+  }
+}
