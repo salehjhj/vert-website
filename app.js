@@ -174,24 +174,13 @@ function renderProducts(filter) {
   const grid = document.getElementById('products-grid');
   const filtered = filter === 'all' ? PRODUCTS : PRODUCTS.filter(p => p.category === filter);
   grid.innerHTML = filtered.map((p, i) => {
-    const hasVars = p.variations && p.variations.options.length > 1;
-    const varToggle = hasVars ? `
-      <div class="card-var-toggle" id="cvt-${p.id}">
-        <button class="cvt-pill active" data-pid="${p.id}" data-var="0">${p.variations.options[0].name}</button>
-        <button class="cvt-pill" data-pid="${p.id}" data-var="1">${p.variations.options[1].name}</button>
-      </div>` : '';
     return `<article class="product-card reveal-up" style="--delay:${(i%4)*0.06}s" data-category="${p.category}" role="listitem">
       <div class="product-visual">
         <div class="slideshow" id="gs-${p.id}"></div>
-        ${varToggle}
         <div class="prod-actions">
           <button class="prod-btn view-btn" data-id="${p.id}">Quick View</button>
           <button class="prod-btn add-btn" data-id="${p.id}">+ Add</button>
         </div>
-      </div>
-      <div class="product-info">
-        <div class="product-meta"><span class="product-new-tag">New</span></div>
-        <span class="product-price">${formatPrice(p.price)}</span>
       </div>
     </article>`;
   }).join('');
@@ -199,21 +188,6 @@ function renderProducts(filter) {
   filtered.forEach(p => {
     const imgs = p.variations ? p.variations.options[0].images : ['images/jewelry_1.jpg'];
     makeSlideshow(document.getElementById(`gs-${p.id}`), imgs);
-  });
-
-  filtered.forEach(p => {
-    if (!p.variations || p.variations.options.length < 2) return;
-    const toggleEl = document.getElementById(`cvt-${p.id}`);
-    if (!toggleEl) return;
-    toggleEl.querySelectorAll('.cvt-pill').forEach(btn => {
-      btn.addEventListener('click', e => {
-        e.stopPropagation();
-        const varIdx = parseInt(btn.dataset.var);
-        toggleEl.querySelectorAll('.cvt-pill').forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-        makeSlideshow(document.getElementById(`gs-${p.id}`), p.variations.options[varIdx].images);
-      });
-    });
   });
 
   observeRevealElements();
