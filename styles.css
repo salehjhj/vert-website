@@ -524,6 +524,16 @@ body.cursor-hover .cursor-ring {
   overflow: hidden;
   background: var(--green-deep);
 }
+/* Override the global 3:4 slideshow aspect-ratio inside product cards so the
+   slideshow fills the 1:1 card exactly, then shift the crop to the lower-center
+   where the jewelry piece sits in these portrait shots */
+.product-visual .slideshow {
+  aspect-ratio: unset;
+  height: 100%;
+}
+.product-visual .slide img {
+  object-position: center 70%;
+}
 .prod-primary, .prod-secondary {
   position: absolute; inset: 0;
   transition: opacity 0.6s var(--ease-smooth);
