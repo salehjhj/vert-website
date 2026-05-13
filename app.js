@@ -305,8 +305,10 @@ document.getElementById('modal-add-cart').addEventListener('click',()=>{
 document.querySelectorAll('.cat-card').forEach(card=>{
   card.addEventListener('click',()=>{
     const filter=card.dataset.filter;
-    document.getElementById('collections').scrollIntoView({behavior:'smooth'});
-    setTimeout(()=>{ document.querySelectorAll('.filter-pill').forEach(p=>{const match=p.dataset.filter===filter;p.classList.toggle('active',match);p.setAttribute('aria-selected',String(match));}); activeFilter=filter; renderProducts(filter); },400);
+    document.querySelectorAll('.filter-pill').forEach(p=>{const match=p.dataset.filter===filter;p.classList.toggle('active',match);p.setAttribute('aria-selected',String(match));});
+    activeFilter=filter;
+    renderProducts(filter);
+    setTimeout(()=>{ document.getElementById('collections').scrollIntoView({behavior:'smooth'}); }, 60);
   });
 });
 
