@@ -14,8 +14,8 @@ const PRODUCTS = [
     sizes: ['5', '6', '7', '7.5', '8', '8.5', '9'],
     specs: '18K Gold · Diamond-edged band · Brushed satin center · Hallmarked in Kuwait',
     variations: { label: 'Metal Finish', options: [
-      { name: 'Yellow Gold', images: ['images/jewelry_1.jpg','images/jewelry_1_1.jpg','images/jewelry_1_2.jpg','images/jewelry_5.jpg','images/jewelry_5_1.jpg','images/jewelry_7.jpg','images/jewelry_7_1.jpg','images/jewelry_9.jpg','images/jewelry_9_1.jpg','images/jewelry_9_2.jpg','images/jewelry_9_3.jpg','images/jewelry_11.jpg','images/jewelry_11_1.jpg','images/jewelry_13.jpg','images/jewelry_13_1.jpg','images/jewelry_15.jpg','images/jewelry_15_1.jpg'] },
-      { name: 'White Gold',  images: ['images/jewelry_2.jpg','images/jewelry_2_1.jpg','images/jewelry_4.jpg','images/jewelry_4_1.jpg','images/jewelry_6.jpg','images/jewelry_6_1.jpg','images/jewelry_8.jpg','images/jewelry_8_1.jpg','images/jewelry_10.jpg','images/jewelry_10_1.jpg','images/jewelry_12.jpg','images/jewelry_12_1.jpg','images/jewelry_14.jpg','images/jewelry_14_1.jpg'] }
+      { name: 'Yellow Gold', images: ['images/jewelry_7.jpg','images/jewelry_1.jpg','images/jewelry_1_1.jpg','images/jewelry_1_2.jpg','images/jewelry_5.jpg','images/jewelry_5_1.jpg','images/jewelry_7_1.jpg','images/jewelry_9.jpg','images/jewelry_9_1.jpg','images/jewelry_9_2.jpg','images/jewelry_9_3.jpg','images/jewelry_11.jpg','images/jewelry_11_1.jpg','images/jewelry_13.jpg','images/jewelry_13_1.jpg','images/jewelry_15.jpg','images/jewelry_15_1.jpg'] },
+      { name: 'White Gold',  images: ['images/jewelry_6.jpg','images/jewelry_2.jpg','images/jewelry_2_1.jpg','images/jewelry_4.jpg','images/jewelry_4_1.jpg','images/jewelry_6_1.jpg','images/jewelry_8.jpg','images/jewelry_8_1.jpg','images/jewelry_10.jpg','images/jewelry_10_1.jpg','images/jewelry_12.jpg','images/jewelry_12_1.jpg','images/jewelry_14.jpg','images/jewelry_14_1.jpg'] }
     ]}
   },
   {
@@ -37,7 +37,7 @@ const PRODUCTS = [
     specs: '18K Gold · Full pavé diamond face · 8mm diameter · Post & butterfly back · Hallmarked in Kuwait',
     variations: { label: 'Metal Finish', options: [
       { name: 'Yellow Gold', images: ['images/jewelry_21.jpg','images/jewelry_21_1.jpg','images/jewelry_20.jpg'] },
-      { name: 'White Gold',  images: ['images/jewelry_20_1.jpg','images/jewelry_22.jpg','images/jewelry_22_1.jpg','images/jewelry_23.jpg','images/jewelry_23_1.jpg'] }
+      { name: 'White Gold',  images: ['images/jewelry_22.jpg','images/jewelry_20_1.jpg','images/jewelry_22_1.jpg','images/jewelry_23.jpg','images/jewelry_23_1.jpg'] }
     ]}
   },
   {
@@ -47,7 +47,7 @@ const PRODUCTS = [
     sizes: null,
     specs: '18K Gold · Full pavé diamond surface · Thick rounded hoop · Lever-back closure · Hallmarked in Kuwait',
     variations: { label: 'Metal Finish', options: [
-      { name: 'Yellow Gold', images: ['images/jewelry_31.jpg','images/jewelry_31_1.jpg','images/jewelry_33.jpg','images/jewelry_33_1.jpg'] },
+      { name: 'Yellow Gold', images: ['images/jewelry_33.jpg','images/jewelry_31.jpg','images/jewelry_31_1.jpg','images/jewelry_33_1.jpg'] },
       { name: 'White Gold',  images: ['images/jewelry_30.jpg','images/jewelry_30_1.jpg','images/jewelry_32.jpg','images/jewelry_32_1.jpg'] }
     ]}
   },
@@ -80,7 +80,7 @@ const PRODUCTS = [
     sizes: ['S — 16cm', 'M — 17cm', 'L — 18cm'],
     specs: '18K White Gold · Emerald baguettes or all-diamond · Two rows round brilliant diamonds · Hallmarked in Kuwait',
     variations: { label: 'Stone', options: [
-      { name: 'Emerald & Diamond', images: ['images/jewelry_37.jpg','images/jewelry_37_1.jpg','images/jewelry_36.jpg','images/jewelry_35.jpg','images/jewelry_35_1.jpg'] },
+      { name: 'Emerald & Diamond', images: ['images/jewelry_36.jpg','images/jewelry_37.jpg','images/jewelry_37_1.jpg','images/jewelry_35.jpg','images/jewelry_35_1.jpg','images/jewelry_36_1.jpg'] },
       { name: 'All Diamond',       images: ['images/jewelry_36_1.jpg'] }
     ]}
   },
