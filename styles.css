@@ -574,6 +574,42 @@ body.cursor-hover .cursor-ring {
   overflow: hidden;
   background: var(--green-deep);
   box-shadow: 0 32px 80px rgba(0,0,0,0.6), 0 12px 32px rgba(0,0,0,0.38);
+  isolation: isolate;
+}
+/* Hover dark gradient overlay */
+.product-visual::after {
+  content: '';
+  position: absolute; inset: 0; z-index: 1;
+  background: linear-gradient(
+    to top,
+    rgba(20,20,18,0.80) 0%,
+    rgba(20,20,18,0.40) 50%,
+    transparent 100%
+  );
+  opacity: 0;
+  transition: opacity 0.5s var(--ease-out);
+  pointer-events: none;
+}
+.product-card:hover .product-visual::after { opacity: 1; }
+/* "View Piece" gold label */
+.product-visual::before {
+  content: 'View Piece';
+  position: absolute;
+  bottom: 54px; left: 50%;
+  transform: translateX(-50%) translateY(8px);
+  z-index: 2;
+  font-family: var(--sans);
+  font-size: 9px; letter-spacing: 0.24em; text-transform: uppercase;
+  color: var(--gold);
+  opacity: 0;
+  transition: opacity 0.45s var(--ease-out) 0.05s,
+              transform 0.45s var(--ease-out) 0.05s;
+  pointer-events: none;
+  white-space: nowrap;
+}
+.product-card:hover .product-visual::before {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
 }
 .product-visual .slideshow {
   aspect-ratio: unset;
@@ -592,6 +628,7 @@ body.cursor-hover .cursor-ring {
 /* Hover action bar */
 .prod-actions {
   position: absolute; bottom: 0; left: 0; right: 0;
+  z-index: 3;
   padding: 10px 12px;
   background: linear-gradient(to top, rgba(26,26,24,0.82), transparent);
   display: flex; gap: 8px;
