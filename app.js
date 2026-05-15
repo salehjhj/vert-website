@@ -174,7 +174,7 @@ function renderProducts(filter) {
   const grid = document.getElementById('products-grid');
   const filtered = filter === 'all' ? PRODUCTS : PRODUCTS.filter(p => p.category === filter);
   grid.innerHTML = filtered.map((p, i) => {
-    return `<article class="product-card reveal-up" style="--delay:${(i%4)*0.06}s" data-category="${p.category}" role="listitem">
+    return `<article class="product-card reveal-up" style="--delay:${(i%4)*0.09}s" data-category="${p.category}" role="listitem">
       <div class="product-visual">
         <div class="slideshow" id="gs-${p.id}"></div>
         <div class="prod-actions">

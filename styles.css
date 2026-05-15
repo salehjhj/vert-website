@@ -1037,6 +1037,13 @@ details summary::-webkit-details-marker { display: none; }
 }
 .reveal-up.visible { opacity: 1; transform: translateY(0); }
 
+/* Product cards: deeper float, longer & smoother (non-bouncy) ease */
+.product-card.reveal-up {
+  transform: translateY(48px);
+  transition: opacity 1.05s cubic-bezier(0.25, 0.46, 0.45, 0.94) var(--delay, 0s),
+              transform 1.15s cubic-bezier(0.25, 0.46, 0.45, 0.94) var(--delay, 0s);
+}
+
 /* ── Category Backgrounds (CSS-art style) ─────────────────────── */
 .cat-bg-1 {
   background:
