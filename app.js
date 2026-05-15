@@ -14,7 +14,7 @@ const PRODUCTS = [
     sizes: ['5', '6', '7', '7.5', '8', '8.5', '9'],
     specs: '18K Gold · Diamond-edged band · Brushed satin center · Hallmarked in Kuwait',
     variations: { label: 'Metal Finish', options: [
-      { name: 'Yellow Gold', images: ['images/jewelry_7.jpg','images/jewelry_1.jpg','images/jewelry_1_1.jpg','images/jewelry_1_2.jpg','images/jewelry_5.jpg','images/jewelry_5_1.jpg','images/jewelry_7_1.jpg','images/jewelry_9.jpg','images/jewelry_9_1.jpg','images/jewelry_9_2.jpg','images/jewelry_9_3.jpg','images/jewelry_11.jpg','images/jewelry_11_1.jpg','images/jewelry_13.jpg','images/jewelry_13_1.jpg','images/jewelry_15.jpg','images/jewelry_15_1.jpg'] },
+      { name: 'Yellow Gold', images: ['images/oct_8T9A4083.jpg','images/jewelry_7.jpg','images/jewelry_1.jpg','images/jewelry_1_1.jpg','images/jewelry_1_2.jpg','images/jewelry_5.jpg','images/jewelry_5_1.jpg','images/jewelry_7_1.jpg','images/jewelry_9.jpg','images/jewelry_9_1.jpg','images/jewelry_9_2.jpg','images/jewelry_9_3.jpg','images/jewelry_11.jpg','images/jewelry_11_1.jpg','images/jewelry_13.jpg','images/jewelry_13_1.jpg','images/jewelry_15.jpg','images/jewelry_15_1.jpg'] },
       { name: 'White Gold',  images: ['images/jewelry_6.jpg','images/jewelry_2.jpg','images/jewelry_2_1.jpg','images/jewelry_4.jpg','images/jewelry_4_1.jpg','images/jewelry_6_1.jpg','images/jewelry_8.jpg','images/jewelry_8_1.jpg','images/jewelry_10.jpg','images/jewelry_10_1.jpg','images/jewelry_12.jpg','images/jewelry_12_1.jpg','images/jewelry_14.jpg','images/jewelry_14_1.jpg'] }
     ]}
   },
@@ -47,7 +47,7 @@ const PRODUCTS = [
     sizes: null,
     specs: '18K Gold · Full pavé diamond surface · Thick rounded hoop · Lever-back closure · Hallmarked in Kuwait',
     variations: { label: 'Metal Finish', options: [
-      { name: 'Yellow Gold', images: ['images/jewelry_33.jpg','images/jewelry_31.jpg','images/jewelry_31_1.jpg','images/jewelry_33_1.jpg'] },
+      { name: 'Yellow Gold', images: ['images/oct_8T9A4069.jpg','images/jewelry_33.jpg','images/jewelry_31.jpg','images/jewelry_31_1.jpg','images/jewelry_33_1.jpg'] },
       { name: 'White Gold',  images: ['images/jewelry_30.jpg','images/jewelry_30_1.jpg','images/jewelry_32.jpg','images/jewelry_32_1.jpg'] }
     ]}
   },
@@ -69,7 +69,7 @@ const PRODUCTS = [
     sizes: ['S — 58mm', 'M — 62mm', 'L — 66mm'],
     specs: '18K Gold · Diamond-edged wide bangle · Brushed satin center · Hallmarked in Kuwait',
     variations: { label: 'Metal Finish', options: [
-      { name: 'Yellow Gold', images: ['images/jewelry_17.jpg','images/jewelry_17_1.jpg','images/jewelry_19.jpg','images/jewelry_19_1.jpg'] },
+      { name: 'Yellow Gold', images: ['images/oct_8T9A4096.jpg','images/jewelry_17.jpg','images/jewelry_17_1.jpg','images/jewelry_19.jpg','images/jewelry_19_1.jpg','images/jewelry_78.jpg','images/jewelry_78_1.jpg'] },
       { name: 'White Gold',  images: ['images/jewelry_18.jpg','images/jewelry_18_1.jpg'] }
     ]}
   },
@@ -80,8 +80,80 @@ const PRODUCTS = [
     sizes: ['S — 16cm', 'M — 17cm', 'L — 18cm'],
     specs: '18K White Gold · Emerald baguettes or all-diamond · Two rows round brilliant diamonds · Hallmarked in Kuwait',
     variations: { label: 'Stone', options: [
-      { name: 'Emerald & Diamond', images: ['images/jewelry_36.jpg','images/jewelry_37.jpg','images/jewelry_37_1.jpg','images/jewelry_35.jpg','images/jewelry_35_1.jpg','images/jewelry_36_1.jpg'] },
+      { name: 'Emerald & Diamond', images: ['images/oct_8T9A4114.jpg','images/jewelry_36.jpg','images/jewelry_37.jpg','images/jewelry_37_1.jpg','images/jewelry_35.jpg','images/jewelry_35_1.jpg','images/jewelry_36_1.jpg'] },
       { name: 'All Diamond',       images: ['images/jewelry_36_1.jpg'] }
+    ]}
+  },
+  {
+    id: 8, name: 'Wide Diamond-Edge Hoop Earrings', category: 'earrings', price: 220,
+    desc: 'Wide sculptural hoops with diamond-encrusted edges framing a brushed satin center — the perfect earring companion to the Wide Band Diamond Ring and Bangle.',
+    metals: ['18K Yellow Gold'],
+    sizes: null,
+    specs: '18K Yellow Gold · Diamond-edged wide hoop · Brushed satin center · Post & omega back · Hallmarked in Kuwait',
+    variations: { label: 'Style', options: [
+      { name: '18K Yellow Gold', images: ['images/oct_8T9A4080.jpg'] }
+    ]}
+  },
+  {
+    id: 9, name: 'Emerald Flower Cluster Earrings', category: 'earrings', price: 450,
+    desc: 'A floral arrangement of vivid pear-cut emeralds radiating from a central star motif set in white gold. Dramatic yet unmistakably feminine.',
+    metals: ['18K White Gold'],
+    sizes: null,
+    specs: '18K White Gold · Pear-cut emerald cluster · Lever-back closure · Hallmarked in Kuwait',
+    variations: { label: 'Style', options: [
+      { name: '18K White Gold', images: ['images/oct_8T9A4059.jpg'] }
+    ]}
+  },
+  {
+    id: 10, name: 'Emerald Halo Ring', category: 'rings', price: 380,
+    desc: 'A vivid cushion cabochon emerald set within a full diamond halo, carried on a delicate split-shank band. A rare combination of presence and precision.',
+    metals: ['18K White Gold'],
+    sizes: ['5', '5.5', '6', '6.5', '7', '7.5', '8'],
+    specs: '18K White Gold · Cushion cabochon emerald · Full diamond halo · Split-shank band · Hallmarked in Kuwait',
+    variations: { label: 'Style', options: [
+      { name: '18K White Gold', images: ['images/oct_8T9A4078.jpg','images/jewelry_80.jpg','images/jewelry_47.jpg','images/jewelry_48.jpg','images/jewelry_49.jpg','images/jewelry_50.jpg','images/jewelry_51.jpg','images/jewelry_47_1.jpg','images/jewelry_48_1.jpg','images/jewelry_49_1.jpg','images/jewelry_50_1.jpg','images/jewelry_80_1.jpg'] }
+    ]}
+  },
+  {
+    id: 11, name: 'Diamond Eternity Bands', category: 'rings', price: 195,
+    desc: 'Ultra-fine eternity bands entirely set with brilliant-cut diamonds. Designed to be worn alone or stacked — each ring a whisper of light.',
+    metals: ['18K Yellow Gold'],
+    sizes: ['5', '5.5', '6', '6.5', '7', '7.5', '8'],
+    specs: '18K Yellow Gold · Full pavé diamond eternity band · 1.2mm width · Stackable · Hallmarked in Kuwait',
+    variations: { label: 'Style', options: [
+      { name: '18K Yellow Gold', images: ['images/jewelry_60.jpg','images/jewelry_61.jpg','images/jewelry_59_1.jpg','images/jewelry_60_1.jpg','images/jewelry_61_1.jpg'] }
+    ]}
+  },
+  {
+    id: 12, name: 'Gold Ball Open Bangle', category: 'bracelets', price: 145,
+    desc: 'A slender open bangle terminated by two polished gold balls. Available in plain gold, diamond collar, or fully pavé diamond balls for effortless layering.',
+    metals: ['18K Yellow Gold'],
+    sizes: ['S — 58mm', 'M — 62mm', 'L — 66mm'],
+    specs: '18K Yellow Gold · Open cuff · Ball-end terminals · Three styles · Hallmarked in Kuwait',
+    variations: { label: 'Style', options: [
+      { name: 'Plain Ball',     images: ['images/jewelry_71.jpg','images/jewelry_72.jpg','images/oct_8T9A4099.jpg','images/jewelry_55.jpg','images/jewelry_57.jpg'] },
+      { name: 'Pavé Diamond',   images: ['images/jewelry_73.jpg','images/oct_8T9A4106.jpg','images/jewelry_54_1.jpg','images/jewelry_55_1.jpg','images/jewelry_56.jpg'] },
+      { name: 'Diamond Collar', images: ['images/jewelry_74.jpg','images/oct_8T9A4101.jpg','images/jewelry_56_1.jpg'] }
+    ]}
+  },
+  {
+    id: 13, name: 'Diamond Tennis Bangles', category: 'bracelets', price: 265,
+    desc: 'Sleek rigid bangles fully lined with brilliant-cut diamonds. Seamless and luminous — wear one or stack a pair.',
+    metals: ['18K Yellow Gold'],
+    sizes: ['S — 58mm', 'M — 62mm', 'L — 66mm'],
+    specs: '18K Yellow Gold · Full diamond tennis bangle · Clasp closure · Hallmarked in Kuwait',
+    variations: { label: 'Style', options: [
+      { name: '18K Yellow Gold', images: ['images/oct_8T9A4091.jpg','images/jewelry_75_1.jpg','images/jewelry_76_1.jpg'] }
+    ]}
+  },
+  {
+    id: 14, name: 'Diamond Bar Cuff Bangles', category: 'bracelets', price: 195,
+    desc: 'A refined open cuff bangle with flat pavé diamond bars at each terminus. Minimalist lines, maximum sparkle.',
+    metals: ['18K Yellow Gold'],
+    sizes: ['S — 58mm', 'M — 62mm', 'L — 66mm'],
+    specs: '18K Yellow Gold · Open cuff · Pavé diamond bar ends · Hallmarked in Kuwait',
+    variations: { label: 'Style', options: [
+      { name: '18K Yellow Gold', images: ['images/oct_8T9A4109.jpg','images/oct_8T9A4111.jpg','images/jewelry_62.jpg','images/jewelry_62_1.jpg','images/jewelry_63.jpg'] }
     ]}
   },
 ];
