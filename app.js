@@ -182,6 +182,10 @@ function renderProducts(filter) {
           <button class="prod-btn add-btn" data-id="${p.id}">+ Add</button>
         </div>
       </div>
+      <div class="prod-info">
+        <p class="prod-name">${p.name}</p>
+        <p class="prod-price">${formatPrice(p.price)}</p>
+      </div>
     </article>`;
   }).join('');
 
