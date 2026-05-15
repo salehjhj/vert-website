@@ -393,6 +393,38 @@ body.cursor-hover .cursor-ring {
   to   { opacity: 1; transform: translateY(0); }
 }
 
+/* ── Marquee Strip ────────────────────────────────────────────── */
+.marquee-strip {
+  overflow: hidden;
+  background: var(--black);
+  padding: 28px 0;
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, #000 7%, #000 93%, transparent 100%);
+  mask-image:         linear-gradient(to right, transparent 0%, #000 7%, #000 93%, transparent 100%);
+}
+.marquee-inner {
+  display: flex;
+  width: max-content;
+  animation: marquee-scroll 42s linear infinite;
+  will-change: transform;
+}
+.marquee-strip:hover .marquee-inner { animation-play-state: paused; }
+.marquee-img {
+  width: 255px;
+  height: 340px;
+  object-fit: cover;
+  object-position: center 28%;
+  flex-shrink: 0;
+  display: block;
+  margin-right: 14px;
+}
+@keyframes marquee-scroll {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+@media (max-width: 768px) {
+  .marquee-img { width: 168px; height: 224px; margin-right: 10px; }
+}
+
 /* ── Section Shared Styles ────────────────────────────────────── */
 .section-eyebrow {
   text-align: center;
