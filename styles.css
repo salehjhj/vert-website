@@ -763,6 +763,57 @@ body.cursor-hover .cursor-ring {
   text-align: center;
 }
 
+/* ── Quote Interlude ──────────────────────────────────────────── */
+.quote-interlude {
+  position: relative;
+  text-align: center;
+  padding: clamp(90px, 14vw, 160px) clamp(24px, 8vw, 120px);
+  overflow: hidden;
+  background:
+    radial-gradient(ellipse at 22% 72%, rgba(55,80,44,0.32) 0%, transparent 55%),
+    radial-gradient(ellipse at 80% 18%, rgba(201,169,110,0.07) 0%, transparent 48%),
+    radial-gradient(ellipse at 55% 50%, rgba(30,42,28,0.60) 0%, transparent 70%),
+    linear-gradient(162deg, #0c1209 0%, #141c12 52%, #0f0f0e 100%);
+}
+/* SVG grain texture */
+.quote-interlude::before {
+  content: '';
+  position: absolute; inset: 0; z-index: 0; pointer-events: none;
+  opacity: 0.045;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='260' height='260'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.72' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='260' height='260' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+/* Thin vertical gold rule (used twice: above and below quote) */
+.quote-rule {
+  display: block;
+  width: 1px;
+  height: 60px;
+  margin: 0 auto;
+  background: linear-gradient(to bottom, transparent, rgba(201,169,110,0.65), transparent);
+  position: relative; z-index: 1;
+}
+.quote-rule:first-child  { margin-bottom: 52px; }
+.quote-rule:last-child   { margin-top: 52px; }
+.quote-text {
+  font-family: var(--serif);
+  font-size: clamp(1.45rem, 3vw, 2.9rem);
+  font-weight: 300;
+  line-height: 1.72;
+  letter-spacing: 0.025em;
+  color: rgba(201,169,110,0.88);
+  max-width: 680px;
+  margin: 0 auto;
+  position: relative; z-index: 1;
+}
+.quote-attr {
+  margin-top: 36px;
+  font-family: var(--sans);
+  font-size: 9px;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: rgba(201,169,110,0.42);
+  position: relative; z-index: 1;
+}
+
 /* ── Footer ───────────────────────────────────────────────────── */
 .footer {
   background: var(--green-dark);
