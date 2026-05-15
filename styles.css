@@ -516,7 +516,7 @@ body.cursor-hover .cursor-ring {
 .products-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 56px 36px;
+  gap: 36px 28px;
   align-items: start;
   max-width: 1520px; margin: 0 auto;
   padding: 28px 0 48px;
@@ -527,11 +527,14 @@ body.cursor-hover .cursor-ring {
   display: flex; flex-direction: column;
   min-width: 0;
   --card-rotate: -2deg;
-  transform: rotate(var(--card-rotate));
+  --card-scale: 1;
+  transform: rotate(var(--card-rotate)) scale(var(--card-scale));
   transition: transform 0.55s var(--ease-out);
+  position: relative;
+  z-index: 1;
 }
 .product-card:nth-child(even) { --card-rotate: 2deg; }
-.product-card:hover { transform: translateY(-12px) rotate(var(--card-rotate)); }
+.product-card:hover { transform: translateY(-12px) rotate(var(--card-rotate)) scale(var(--card-scale)); }
 .product-card.hidden { display: none; }
 .product-visual {
   position: relative;
@@ -576,11 +579,16 @@ body.cursor-hover .cursor-ring {
 .prod-btn.add-btn { background: var(--gold); color: var(--black); border-color: var(--gold); }
 .prod-btn.add-btn:hover { background: var(--gold-light); }
 
-/* ── Editorial Gallery Stagger (4-col desktop) ────────────────── */
+/* ── Editorial Collage Stagger (4-col desktop) ───────────────── */
 @media (min-width: 1101px) {
-  .product-card:nth-child(4n+2) { margin-top: 56px; }
-  .product-card:nth-child(4n+3) { margin-top: 24px; }
-  .product-card:nth-child(4n+4) { margin-top: 80px; }
+  /* Col 1 – large anchor card */
+  .product-card:nth-child(4n+1) { --card-scale: 1.08; z-index: 4; }
+  /* Col 2 – small, dropped lower */
+  .product-card:nth-child(4n+2) { --card-scale: 0.84; z-index: 2; margin-top: 80px; }
+  /* Col 3 – oversized, pulled up to spill into row above */
+  .product-card:nth-child(4n+3) { --card-scale: 1.16; z-index: 5; margin-top: -36px; }
+  /* Col 4 – tiny, pushed furthest down */
+  .product-card:nth-child(4n+4) { --card-scale: 0.88; z-index: 2; margin-top: 104px; }
 
   .product-card:nth-child(4n+2) .product-visual { aspect-ratio: 4 / 5; }
   .product-card:nth-child(4n+4) .product-visual { aspect-ratio: 4 / 5; }
@@ -1044,12 +1052,12 @@ details summary::-webkit-details-marker { display: none; }
 
 /* Product cards: deeper float, longer & smoother (non-bouncy) ease */
 .product-card.reveal-up {
-  transform: translateY(48px) rotate(var(--card-rotate));
+  transform: translateY(48px) rotate(var(--card-rotate)) scale(var(--card-scale));
   transition: opacity 1.05s cubic-bezier(0.25, 0.46, 0.45, 0.94) var(--delay, 0s),
               transform 1.15s cubic-bezier(0.25, 0.46, 0.45, 0.94) var(--delay, 0s);
 }
 .product-card.reveal-up.visible {
-  transform: translateY(0) rotate(var(--card-rotate));
+  transform: translateY(0) rotate(var(--card-rotate)) scale(var(--card-scale));
 }
 
 /* ── Category Backgrounds (CSS-art style) ─────────────────────── */
@@ -1103,8 +1111,9 @@ details summary::-webkit-details-marker { display: none; }
 /* ── Responsive ───────────────────────────────────────────────── */
 @media (max-width: 1100px) {
   .products-grid { grid-template-columns: repeat(3, 1fr); }
-  .product-card:nth-child(3n+2) { margin-top: 44px; }
-  .product-card:nth-child(3n+3) { margin-top: 16px; }
+  .product-card:nth-child(3n+1) { --card-scale: 1.07; z-index: 4; }
+  .product-card:nth-child(3n+2) { --card-scale: 0.88; z-index: 2; margin-top: 52px; }
+  .product-card:nth-child(3n+3) { --card-scale: 1.10; z-index: 5; margin-top: -24px; }
   .product-modal { grid-template-columns: 1fr; }
   .modal-gallery { min-height: 340px; }
 }
@@ -1121,7 +1130,7 @@ details summary::-webkit-details-marker { display: none; }
   .product-card:nth-child(3n+2) { margin-top: 0; }
   .product-card:nth-child(3n+3) { margin-top: 0; }
   .product-card:nth-child(even) { margin-top: 28px; }
-  .product-card              { --card-rotate: -1deg; }
+  .product-card              { --card-rotate: -1deg; --card-scale: 1; z-index: 1; }
   .product-card:nth-child(even) { --card-rotate: 1deg; }
   .categories-grid  { grid-template-columns: 1fr 1fr; gap: 10px; }
   .editorial-grid   {
@@ -1143,6 +1152,7 @@ details summary::-webkit-details-marker { display: none; }
 }
 @media (max-width: 480px) {
   :root { --nav-h: 60px; }
+  .hero-brand      { font-size: 28vw; }
   .hero-scroll-hint { display: none; }
   .categories-grid { grid-template-columns: 1fr; }
   .products-grid   { gap: 10px; }
