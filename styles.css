@@ -516,24 +516,29 @@ body.cursor-hover .cursor-ring {
 .products-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 28px 20px;
+  gap: 56px 36px;
   align-items: start;
-  max-width: 1300px; margin: 0 auto;
+  max-width: 1520px; margin: 0 auto;
+  padding: 28px 0 48px;
 }
 /* Product Card */
 .product-card {
   cursor: none;
   display: flex; flex-direction: column;
   min-width: 0;
+  --card-rotate: -2deg;
+  transform: rotate(var(--card-rotate));
   transition: transform 0.55s var(--ease-out);
 }
-.product-card:hover { transform: translateY(-10px); }
+.product-card:nth-child(even) { --card-rotate: 2deg; }
+.product-card:hover { transform: translateY(-12px) rotate(var(--card-rotate)); }
 .product-card.hidden { display: none; }
 .product-visual {
   position: relative;
   aspect-ratio: 3 / 4;
   overflow: hidden;
   background: var(--green-deep);
+  box-shadow: 0 32px 80px rgba(0,0,0,0.6), 0 12px 32px rgba(0,0,0,0.38);
 }
 .product-visual .slideshow {
   aspect-ratio: unset;
@@ -1039,9 +1044,12 @@ details summary::-webkit-details-marker { display: none; }
 
 /* Product cards: deeper float, longer & smoother (non-bouncy) ease */
 .product-card.reveal-up {
-  transform: translateY(48px);
+  transform: translateY(48px) rotate(var(--card-rotate));
   transition: opacity 1.05s cubic-bezier(0.25, 0.46, 0.45, 0.94) var(--delay, 0s),
               transform 1.15s cubic-bezier(0.25, 0.46, 0.45, 0.94) var(--delay, 0s);
+}
+.product-card.reveal-up.visible {
+  transform: translateY(0) rotate(var(--card-rotate));
 }
 
 /* ── Category Backgrounds (CSS-art style) ─────────────────────── */
@@ -1109,10 +1117,12 @@ details summary::-webkit-details-marker { display: none; }
 @media (max-width: 768px) {
   .hamburger        { display: flex; }
   .nav-left         { display: none; }
-  .products-grid    { grid-template-columns: repeat(2, 1fr); gap: 14px; }
+  .products-grid    { grid-template-columns: repeat(2, 1fr); gap: 28px 18px; }
   .product-card:nth-child(3n+2) { margin-top: 0; }
   .product-card:nth-child(3n+3) { margin-top: 0; }
   .product-card:nth-child(even) { margin-top: 28px; }
+  .product-card              { --card-rotate: -1deg; }
+  .product-card:nth-child(even) { --card-rotate: 1deg; }
   .categories-grid  { grid-template-columns: 1fr 1fr; gap: 10px; }
   .editorial-grid   {
     grid-template-columns: repeat(2, 1fr);
