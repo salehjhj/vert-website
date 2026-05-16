@@ -19,10 +19,10 @@ const PRODUCTS = [
     ]}
   },
   {
-    id: 2, name: 'Diamond Edge Slim Ring', category: 'rings', price: 120,
+    id: 2, name: 'Diamond Edge Slim Hoop Earrings', category: 'earrings', price: 120,
     desc: 'A refined slim band with a single line of pavé diamonds tracing the outer edge. Timeless and stackable.',
     metals: ['18K Yellow Gold', '18K White Gold'],
-    sizes: ['5', '5.5', '6', '6.5', '7', '7.5', '8'],
+    sizes: null,
     specs: '18K Gold · Pavé diamond edge · 2mm band · Hallmarked in Kuwait',
     variations: { label: 'Metal Finish', options: [
       { name: 'Yellow Gold', images: ['images/jewelry_27.jpg','images/jewelry_27_1.jpg'] },
@@ -184,16 +184,6 @@ const PRODUCTS = [
     specs: '18K Yellow Gold · Diamond-edged open cuff · Satin gold body · Adjustable opening · Hallmarked in Kuwait',
     variations: { label: 'Metal Finish', options: [
       { name: 'Yellow Gold', images: ['images/oct_8T9A4096.jpg','images/jewelry_78.jpg','images/jewelry_78_1.jpg'] }
-    ]}
-  },
-  {
-    id: 18, name: 'Pavé Diamond Dome Hoops', category: 'earrings', price: 195,
-    desc: 'Sculptural dome-shaped hoop earrings entirely pavé-set with brilliant-cut diamonds. Bold yet effortlessly wearable for every occasion.',
-    metals: ['18K Yellow Gold'],
-    sizes: null,
-    specs: '18K Yellow Gold · Full pavé diamond dome · Lever-back closure · Hallmarked in Kuwait',
-    variations: { label: 'Metal Finish', options: [
-      { name: 'Yellow Gold', images: ['images/oct_8T9A4069.jpg'] }
     ]}
   },
 ];
