@@ -381,6 +381,19 @@ function openMobileMenu(){mobileMenu.classList.add('open');mobileMenu.setAttribu
 function closeMobileMenu(){mobileMenu.classList.remove('open');mobileMenu.setAttribute('aria-hidden','true');document.body.style.overflow='';}
 hamburger.addEventListener('click',openMobileMenu); closeMobileBtn.addEventListener('click',closeMobileMenu);
 mobileMenu.querySelectorAll('.mobile-nav-link').forEach(link=>link.addEventListener('click',closeMobileMenu));
+mobileMenu.querySelectorAll('.mobile-nav-link[data-filter]').forEach(link=>link.addEventListener('click', e => {
+  e.preventDefault();
+  const filter = link.dataset.filter;
+  document.querySelectorAll('.filter-pill').forEach(p => {
+    const match = p.dataset.filter === filter;
+    p.classList.toggle('active', match);
+    p.setAttribute('aria-selected', String(match));
+  });
+  activeFilter = filter;
+  renderProducts(filter);
+  closeMobileMenu();
+  setTimeout(() => { document.getElementById('collections').scrollIntoView({behavior:'smooth'}); }, 60);
+}));
 
 let revealObserver;
 function observeRevealElements() {
